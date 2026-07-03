@@ -8,6 +8,8 @@ var expenseAmount = 0;
 var expense = document.getElementById("expense");
 
 var amountInput = document.getElementById("amountInput");
+var descriptionInput = document.getElementById("description");
+
 var records = document.getElementById("records");
 
 var transactions = [];
@@ -58,47 +60,30 @@ function renderTransactions() {
   records.innerHTML = transactions
     .map(function (transaction) {
       var sign = transaction.type === "income" ? "+" : "-";
-      return `<p class="${transaction.type}">${sign}${formatter.format(transaction.amount)} on ${transaction.date}</p>`;
+      var desc = transaction.description ? ` : ${transaction.description}` : "";
+      return `<p class="${transaction.type}">${sign}${formatter.format(transaction.amount)} on ${transaction.date}${desc}</p>`;
     })
     .join("");
 }
 
 function addIncome() {
   var value = Number(amountInput.value);
+  var description = descriptionInput.value.trim();
   var current = new Date().toLocaleString();
 
   if (value > 0) {
     transactions.unshift({
       type: "income",
       amount: value,
-      date: current
+      date: current,
+      description: description
     });
 
     amount += value;
     incomeAmount += value;
 
     amountInput.value = "";
-    saveTransactions();
-    renderTransactions();
-    refreshValues();
-  }
-}
-
-function addExpense() {
-  var value = Number(amountInput.value);
-  var current = new Date().toLocaleString();
-
-  if (value > 0) {
-    transactions.unshift({
-      type: "expense",
-      amount: value,
-      date: current
-    });
-
-    amount -= value;
-    expenseAmount += value;
-
-    amountInput.value = "";
+    descriptionInput.value = "";
     saveTransactions();
     renderTransactions();
     refreshValues();
