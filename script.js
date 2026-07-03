@@ -104,3 +104,17 @@ function addExpense() {
     refreshValues();
   }
 }
+
+function clearValues() {
+  amount = 0;
+  incomeAmount = 0;
+  expenseAmount = 0;
+  transactions = [];
+
+  localStorage.removeItem(STORAGE_KEY);
+
+  amountInput.value = "";
+  records.innerHTML = "";
+
+  refreshValues();
+}
