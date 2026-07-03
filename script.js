@@ -12,12 +12,17 @@ var amountInput = document.getElementById("amountInput").value;
 var records = document.getElementById("records");
 var transactions = [];
 
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'PHP'
+});
+
 refreshValues();
 
 function refreshValues() {
-    balance.innerHTML = `P${amount}`;
-    income.innerHTML = `P${incomeAmount}`;
-    expense.innerHTML = `P${expenseAmount}`;
+    balance.innerHTML = `${formatter.format(amount)}`;
+    income.innerHTML = `${formatter.format(incomeAmount)}`;
+    expense.innerHTML = `${formatter.format(expenseAmount)}`;
 }
 
 function addIncome() {
@@ -29,7 +34,7 @@ function addIncome() {
 
     document.getElementById("amountInput").value = "";
 
-    transactions.push(`<p class="income">+${amountInput} on ${current}</p>`)
+    transactions.push(`<p class="income">+${formatter.format(amountInput)} on ${current}</p>`)
     records.innerHTML = transactions.join("");
     
     refreshValues();
@@ -44,7 +49,7 @@ function addExpense() {
     
     document.getElementById("amountInput").value = "";
 
-    transactions.push(`<p class="expense">-${amountInput} on ${current}</p>`)
+    transactions.push(`<p class="expense">-${formatter.format(amountInput)} on ${current}</p>`)
     records.innerHTML = transactions.join("");
 
     refreshValues();
