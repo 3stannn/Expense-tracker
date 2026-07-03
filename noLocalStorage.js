@@ -58,3 +58,15 @@ function addExpense() {
         refreshValues();
     }
 }
+
+function clearValues() {
+  amount = 0;
+  incomeAmount = 0;
+  expenseAmount = 0;
+  transactions = [];
+
+  amountInput.value = "";
+  records.innerHTML = "";
+
+  refreshValues();
+}
