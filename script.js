@@ -5,56 +5,102 @@ var incomeAmount = 0;
 var income = document.getElementById("income");
 
 var expenseAmount = 0;
-var expense = document.getElementById("expense")
+var expense = document.getElementById("expense");
 
-var amountInput = document.getElementById("amountInput").value;
-
+var amountInput = document.getElementById("amountInput");
 var records = document.getElementById("records");
-var transactions = [];
 
-const formatter = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'PHP'
+var transactions = [];
+var STORAGE_KEY = "expense-tracker-transactions";
+
+const formatter = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "PHP"
 });
 
+loadTransactions();
 refreshValues();
+renderTransactions();
 
 function refreshValues() {
-    balance.innerHTML = `${formatter.format(amount)}`;
-    income.innerHTML = `${formatter.format(incomeAmount)}`;
-    expense.innerHTML = `${formatter.format(expenseAmount)}`;
+  balance.innerHTML = formatter.format(amount);
+  income.innerHTML = formatter.format(incomeAmount);
+  expense.innerHTML = formatter.format(expenseAmount);
+}
+
+function loadTransactions() {
+  var saved = localStorage.getItem(STORAGE_KEY);
+
+  if (saved) {
+    transactions = JSON.parse(saved);
+
+    amount = 0;
+    incomeAmount = 0;
+    expenseAmount = 0;
+
+    transactions.forEach(function (transaction) {
+      if (transaction.type === "income") {
+        amount += transaction.amount;
+        incomeAmount += transaction.amount;
+      } else {
+        amount -= transaction.amount;
+        expenseAmount += transaction.amount;
+      }
+    });
+  }
+}
+
+function saveTransactions() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(transactions));
+}
+
+function renderTransactions() {
+  records.innerHTML = transactions
+    .map(function (transaction) {
+      var sign = transaction.type === "income" ? "+" : "-";
+      return `<p class="${transaction.type}">${sign}${formatter.format(transaction.amount)} on ${transaction.date}</p>`;
+    })
+    .join("");
 }
 
 function addIncome() {
-    var amountInput = Number(document.getElementById("amountInput").value);
-    const current = new Date();
+  var value = Number(amountInput.value);
+  var current = new Date().toLocaleString();
 
-    if (amountInput > 0) {
-        amount += amountInput;
-        incomeAmount += amountInput;
+  if (value > 0) {
+    transactions.unshift({
+      type: "income",
+      amount: value,
+      date: current
+    });
 
-        document.getElementById("amountInput").value = "";
+    amount += value;
+    incomeAmount += value;
 
-        transactions.unshift(`<p class="income">+${formatter.format(amountInput)} on ${current}</p>`)
-        records.innerHTML = transactions.join("");
-        
-        refreshValues();
-    }
+    amountInput.value = "";
+    saveTransactions();
+    renderTransactions();
+    refreshValues();
+  }
 }
 
 function addExpense() {
-    var amountInput = Number(document.getElementById("amountInput").value);
-    const current = new Date();
+  var value = Number(amountInput.value);
+  var current = new Date().toLocaleString();
 
-    if (amountInput > 0) {
-        amount -= amountInput;
-        expenseAmount += amountInput;
-        
-        document.getElementById("amountInput").value = "";
+  if (value > 0) {
+    transactions.unshift({
+      type: "expense",
+      amount: value,
+      date: current
+    });
 
-        transactions.unshift(`<p class="expense">-${formatter.format(amountInput)} on ${current}</p>`)
-        records.innerHTML = transactions.join("");
+    amount -= value;
+    expenseAmount += value;
 
-        refreshValues();
-    }
+    amountInput.value = "";
+    saveTransactions();
+    renderTransactions();
+    refreshValues();
+  }
 }
