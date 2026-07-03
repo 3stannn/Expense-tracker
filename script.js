@@ -90,6 +90,30 @@ function addIncome() {
   }
 }
 
+function addExpense() {
+  var value = Number(amountInput.value);
+  var description = descriptionInput.value.trim();
+  var current = new Date().toLocaleString();
+
+  if (value > 0) {
+    transactions.unshift({
+      type: "expense",
+      amount: value,
+      date: current,
+      description: description
+    });
+
+    amount -= value;
+    expenseAmount += value;
+
+    amountInput.value = "";
+    descriptionInput.value = "";
+    saveTransactions();
+    renderTransactions();
+    refreshValues();
+  }
+}
+
 function clearValues() {
   amount = 0;
   incomeAmount = 0;
