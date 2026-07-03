@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Expense Tracker</h1>
+    <div class="container">
+        <div>
+            <h4>Your Balance</h4>
+            <h2 id="balance">P1,000.00</h2>
+            <div class="card">
+                <div class="income-card">
+                    <p>Income</p>
+                    <h3 id="income">P1,000.00</h3>
+                </div>
+                <div class="expense-card">
+                    <p>Expense</p>
+                    <h3 id="expense">P0</h3>
+                </div>
+            </div>
+        </div>
+        <div>
+            <input type="number" name="amount" id="amountInput" placeholder="Amount">
+            <br>
+            <button onclick="addIncome()" class="inBtn">Income</button>
+            <button onclick="addExpense()" class="outBtn">Expense</button>
+        </div>
+    </div>
+    <div class="transaction-container">
+        <h4>Transactions</h4>
+        <div id="records">
+
+        </div>
+    </div>
+    <div class="footer">
+        <footer>
+            <p class="footer-text">
+                &copy<script>document.write(new Date().getFullYear());</script> <br>
+                Coded in <span class="top-text">VS Code</span> and Deployed with <span class="top-text">GitHub Pages</span><br>
+                Developed by <span class="bottom-text"><a href="#home">Thristan Bumagat</a></span> | Source Code Available on <span class="bottom-text"><a target="_blank" href="https://github.com/3stannn/Portfolio-dev">GitHub</a></span>
+            </p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Geist", sans-serif;
+    font-style: normal;
+    background-color: #000000;
+    color: #EDEDED;
+}
+
+h1 {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 800;
+    color: #EDEDED;
+    letter-spacing: normal;
+    line-height: 20px;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    border-bottom: solid #222222 1px;
+}
+
+.container {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    text-align: center;
+    width: 50%;
+    background: #0A0A0A;
+    border: solid 1px #222222;
+    border-radius: 10px;
+    padding: 10px;
+    color: #EDEDED;
+}
+
+.container input {
+    background-color: #222222;
+    border: none;
+    border-radius: 5px;
+    color: #EDEDED;
+    font-family: "Geist", sans-serif;
+    font-size: 14px;
+    padding: 10px;
+}
+
+.container button {
+    font-family: "Geist", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 9px;
+    width: 80px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.container button:hover {
+    cursor: pointer;
+}
+
+.inBtn {
+    background-color: #0F2E18;
+    color: #54C064;
+}
+
+.outBtn {
+    background-color: #2e0f0f;
+    color: #982d2d;
+}
+
+.container h4 {
+    color: #7D7D7D;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: normal;
+    line-height: 20px;
+}
+
+.card {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    font-size: 14px;
+    line-height: 20px;
+    padding-bottom: 25px;
+}
+
+.income-card {
+    background-color: #0A0A0A;
+    min-width: 40%;
+    border: solid #222222 1px;
+    border-radius: 5px;
+}
+
+.income-card p, .expense-card p {
+    color: #7D7D7D;
+}
+
+.expense-card {
+    background-color: #0A0A0A;
+    min-width: 40%;
+    border: solid #222222 1px;
+    border-radius: 5px;
+}
+
+.transaction-container {
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 150px;
+    align-items: center;
+    text-align: left;
+    width: 50%;
+    background: #0A0A0A;
+    border: solid 1px #222222;
+    border-radius: 10px;
+    padding: 10px;
+    color: #EDEDED;
+}
+
+.transaction-container h4 {
+    color: #7D7D7D;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: normal;
+    line-height: 20px;
+    padding-left: 10px;
+}
+
+.transaction-container p {
+    font-size: 14px;
+    line-height: 20px;
+    padding-left: 10px;
+}
+
+.income {
+    color: #54C064;
+}
+
+.expense {
+    color: #982d2d;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer {
+    text-align: center;
+    background-color: #0A0A0A;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 0%;
+    padding: 1%;
+    margin-top: 30px;
+}
+
+.footer-text {
+    font-family: "Geist", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: #9E9EA8;
+    font-size: 14px;
+}
+
+.footer-text .top-text{
+    color: white;
+    font-weight: 600;
+}
+
+.footer-text .bottom-text a{
+    color: #982d2d;
+    text-decoration: none;
+    font-family: "Geist", sans-serif;
+    font-weight: 600;
+}
+
+@media (max-width: 640px) {
+    .container {
+        width: 80%;
+    }
+
+    .container button {
+        width: 120px;
+        margin-top: 20px;
+    }
+
+    .transaction-container {
+        width: 80%;
+    }
+}
