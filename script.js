@@ -29,28 +29,32 @@ function addIncome() {
     var amountInput = Number(document.getElementById("amountInput").value);
     const current = new Date();
 
-    amount += amountInput;
-    incomeAmount += amountInput;
+    if (amountInput > 0) {
+        amount += amountInput;
+        incomeAmount += amountInput;
 
-    document.getElementById("amountInput").value = "";
+        document.getElementById("amountInput").value = "";
 
-    transactions.push(`<p class="income">+${formatter.format(amountInput)} on ${current}</p>`)
-    records.innerHTML = transactions.join("");
-    
-    refreshValues();
+        transactions.unshift(`<p class="income">+${formatter.format(amountInput)} on ${current}</p>`)
+        records.innerHTML = transactions.join("");
+        
+        refreshValues();
+    }
 }
 
 function addExpense() {
     var amountInput = Number(document.getElementById("amountInput").value);
     const current = new Date();
 
-    amount -= amountInput;
-    expenseAmount += amountInput;
-    
-    document.getElementById("amountInput").value = "";
+    if (amountInput > 0) {
+        amount -= amountInput;
+        expenseAmount += amountInput;
+        
+        document.getElementById("amountInput").value = "";
 
-    transactions.push(`<p class="expense">-${formatter.format(amountInput)} on ${current}</p>`)
-    records.innerHTML = transactions.join("");
+        transactions.unshift(`<p class="expense">-${formatter.format(amountInput)} on ${current}</p>`)
+        records.innerHTML = transactions.join("");
 
-    refreshValues();
+        refreshValues();
+    }
 }
