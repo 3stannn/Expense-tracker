@@ -37,11 +37,22 @@
     </div>
     <div class="transaction-container">
         <div class="transaction-child">
-            <h4>Transactions</h4>
-            <button onclick="clearValues()">Clear</button>
+            <h4>Recent Transactions</h4>
+            <button onclick="clearModal()">Clear</button>
         </div>
         <div id="records">
 
+        </div>
+    </div>
+    <div id="modal-container" class="modal-container">
+        <div class="clear-modal">
+            <div class="clear-card">
+                <p>Are you sure you want to clear your transactions?</p>
+                <div class="button-container">
+                    <button class="clear-btn" onclick="clearValues()">Clear</button>
+                    <button onclick="closeModal()">Close</button>
+                </div>
+            </div>
         </div>
     </div>
     <div class="footer">

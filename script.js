@@ -114,6 +114,11 @@ function addExpense() {
   }
 }
 
+function clearModal() {
+  var modalContainer = document.getElementById("modal-container");
+  modalContainer.classList.add("show");
+}
+
 function clearValues() {
   amount = 0;
   incomeAmount = 0;
@@ -122,8 +127,16 @@ function clearValues() {
 
   localStorage.removeItem(STORAGE_KEY);
 
+  var modalContainer = document.getElementById("modal-container");
+  modalContainer.classList.remove("show");
+
   amountInput.value = "";
   records.innerHTML = "";
 
   refreshValues();
+}
+
+function closeModal() {
+  var modalContainer = document.getElementById("modal-container");
+  modalContainer.classList.remove("show");
 }
